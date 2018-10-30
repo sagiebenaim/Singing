@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>Samples for Semi-supervised Monaural Singing Voice Separation with a Masking Network Trained on Synthetic Mixtures</title>
+    <style type="text/css">
+body, input, select, td, li, div, textarea, p {
+	font-size: 14px;
+	line-height: 16px;
+	font-family: verdana, arial, sans-serif;
+}
+
+body {
+	margin:5px;
+	background-color:white;
+}
+
+h1 {
+	font-size:16px;
+	font-weight:bold;
+}
+
+h2 {
+	font-size:14px;
+	font-weight:bold;
+}
+    </style>
+  </head>
+
+  <body>
+    <h1 align="center"> Samples for Semi-supervised Monaural Singing Voice Separation with a Masking Network Trained on Synthetic Mixtures</h1>
+    <p> A comparison of our semi-supervised method with the state of the art supervised method of "Monaural Singing Voice Separation with Skip-Filtering Connections and Recurrent Inference of Time-Frequency Mask" by Mimilakis et al., ICASSP 2018.</p><p> All baseline results are obtained from <a href="https://js-mim.github.io/mss_pytorch/">https://js-mim.github.io/mss_pytorch/</a>. </p>
+    <p> It seems that our results are cleaner, in the sense that the singing contains less instrumental music. However, there are more distortions in our results. This is reflected in the somewhat lower SDR we display but the much higher SIR.</p>
+<h2 align="left">Audio Demo on Evaluation subset:</h2>
+    <div>
+      <table border = "1" class="inlineTable">
+        <col width="225">
+        <col width="200">
+        <col width="200">
+        <col width="200">
+        <col width="200">
+        <tr>
+        <tr>
+             <th>Name</th>
+             <th>Mix</th>
+             <th>True Source</th>
+             <th>GRU-RIS-L</th>
+             <th>Our (uncut song)</th>
+        </tr>
+
+        <tr>
+           <th> Schoolboy Fascination </th>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Al James - Schoolboy Fascination-01.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Al James - Schoolboy Fascination-02.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+            <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Al James - Schoolboy Fascination-03.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+            <audio controls style="width: 200px;">
+              <source src="wav/Al James - Schoolboy Facination_vocals.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+
+        <tr>
+           <th> Back from the Start </th>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Fergessen - Back from the Start-01.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Fergessen - Back from the Start-02.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+            <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Fergessen - Back from the Start-03.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+            <audio controls style="width: 200px;">
+              <source src="wav/Fergessen - Back From The Start_vocals.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+
+        <tr>
+           <th> The English Actor </th>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/James Elder - The English Actor-01.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+            <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/James Elder - The English Actor-02.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+            <audio controls style="width: 200px;">
+              <source src="mp3files/James Elder - The English Actor-03.mp3" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+          <td>
+            <audio controls style="width: 200px;">
+              <source src="wav/James Elder & Mark M Thompson - The English Actor_vocals.wav" type="audio/mpeg">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+
+        </tr>
+        <tr>
+           <th> Come Around </th>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Leaf - Come Around-01.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Leaf - Come Around-02.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+            <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Leaf - Come Around-03.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+            <audio controls style="width: 200px;">
+              <source src="wav/Leaf - Come Around_vocals.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+           <th> Kaathaadi </th>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Sambasevam Shanmugam - Kaathaadi-01.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Sambasevam Shanmugam - Kaathaadi-02.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+            <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Sambasevam Shanmugam - Kaathaadi-03.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+            <audio controls style="width: 200px;">
+              <source src="wav/Sambasevam Shanmugam - Kaathaadi_vocals.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+           <th>  you Done to Me </th>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Signe Jakobsen -  You Done To Me-01.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Signe Jakobsen -  You Done To Me-02.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+            <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/Signe Jakobsen -  You Done To Me-03.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+            <audio controls style="width: 200px;">
+              <source src="wav/Signe Jakobsen -  You Done To Me_vocals.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+        <tr>
+           <th> Rothko </th>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/The Wrong'Uns - Rothko-01.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/The Wrong'Uns - Rothko-02.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+            <td>
+             <audio controls style="width: 200px;">
+               <source src="mp3files/The Wrong'Uns - Rothko-03.mp3" type="audio/mpeg">
+               Your browser does not support the audio element.
+             </audio>
+           </td>
+           <td>
+            <audio controls style="width: 200px;">
+              <source src="wav/The Wrong'Uns - Rothko_vocals.wav" type="audio/wav">
+              Your browser does not support the audio element.
+            </audio>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+    <h2 align="left">All other music samples used by Mimilakis et al., ICASSP 2018:</h2>
+        <div>
+          <table border = "1" class="inlineTable">
+            <col width="225">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <col width="200">
+            <tr>
+            <tr>
+                 <th>Name</th>
+                 <th>Mix</th>
+                 <th>True Source</th>
+                 <th>GRU-RIS-L</th>
+                 <th>Our</th>
+            </tr>
+
+            <tr>
+               <th>Hexvessel - Preacher's Orchard</th>
+               <td>
+                 <audio controls style="width: 200px;">
+                   <source src=othersongs/hexvessel_mix.mp3 type="audio/mpeg">
+                   Your browser does not support the audio element.
+                 </audio>
+               </td>
+               <td align="center">
+                   Unavailable
+               </td>
+                <td>
+                 <audio controls style="width: 200px;">
+                   <source src=othersongs/hexvessel_sv.mp3 type="audio/mpeg">
+                   Your browser does not support the audio element.
+                 </audio>
+               </td>
+               <td>
+                <audio controls style="width: 200px;">
+                  <source src=wav/hexvessel_mix.wav type="audio/wav">
+                  Your browser does not support the audio element.
+                </audio>
+              </td>
+            </tr>
+
+
+                       <tr>
+                          <th>Igorrr - Tout Petit Moineau  </th>
+                          <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/igorrr_mix.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td align="center">
+                              Unavailable
+                          </td>
+                           <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/igorrr_sv.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                           <audio controls style="width: 200px;">
+                             <source src=wav/igorrr_mix.wav type="audio/wav">
+                             Your browser does not support the audio element.
+                           </audio>
+                         </td>
+                       </tr>
+
+                       <tr>
+                          <th>Kanute - Not Sleeping  </th>
+                          <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/kanute_mix.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td align="center">
+                              Unavailable
+                          </td>
+                           <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/kanute_sv.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                           <audio controls style="width: 200px;">
+                             <source src=wav/kanute_mix.wav type="audio/wav">
+                             Your browser does not support the audio element.
+                           </audio>
+                         </td>
+                       </tr>
+
+
+
+                       <tr>
+                          <th>La Coka Nostra - That's Coke</th>
+                          <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/lcn_thats_coke_mix.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td align="center">
+                              Unavailable
+                          </td>
+                           <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/lcn_thats_coke_sv.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                           <audio controls style="width: 200px;">
+                             <source src=wav/lcn_thats_coke_mix.wav type="audio/wav">
+                             Your browser does not support the audio element.
+                           </audio>
+                         </td>
+                       </tr>
+
+                       <tr>
+                          <th>Trentemoller - Even Though You Are with Another Girl</th>
+                          <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/trentemoller_mix.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td align="center">
+                              Unavailable
+                          </td>
+                           <td>
+                            <audio controls style="width: 200px;">
+                              <source src=othersongs/trentemoller_sv.mp3 type="audio/mpeg">
+                              Your browser does not support the audio element.
+                            </audio>
+                          </td>
+                          <td>
+                           <audio controls style="width: 200px;">
+                             <source src=wav/trentemoller_mix.wav type="audio/wav">
+                             Your browser does not support the audio element.
+                           </audio>
+                         </td>
+                       </tr>
+
+          </table>
+        </div>
+
+  </body>
+</html>
