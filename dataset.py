@@ -1,10 +1,18 @@
 import os
-import scipy.misc as sci
+import imageio
 import numpy as np
 from tqdm import tqdm
 import musdb
+import dsdtools
 import librosa
 import random
+import argparse
+import sys
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--dataset', type=str, default='MUSDB18', help='dataset to create spectrograms from')
+opts = parser.parse_args()
+
 
 def musdb2stft(save_dir='./data/', target='wo_drums'):
     """
@@ -13,13 +21,19 @@ def musdb2stft(save_dir='./data/', target='wo_drums'):
     :param target: music target. for the original setup in the paper run twice, \
                    once for 'wo_vocals' and once for 'mixture'
     """
-    mus = musdb.DB(root_dir='/home/moshe/ext/data/datasets/music/musdb18')
-    tracks = mus.load_mus_tracks(subsets='train')
+    if opts.dataset == 'MUSDB18':
+        mus = musdb.DB(root_dir='./dataset/musdb18')
+        tracks = mus.load_mus_tracks(subsets='train')
+    elif opts.dataset == 'DSD100':
+        dsd = dsdtools.DB(root_dir='./dataset/DSD100')
+        tracks = dsd.load_dsd_tracks(subsets='Dev')
+    else:
+        sys.exit("Only support DSD100|MUSDB18")
+
     save_dir = os.path.join(save_dir, target)
     if not os.path.exists(save_dir):
         print("Creating directory: {}".format(save_dir))
         os.makedirs(save_dir)
-
     for track in tqdm(tracks):
 
         music = switch_music(target, track)
@@ -47,11 +61,16 @@ def musdb2stft(save_dir='./data/', target='wo_drums'):
                                                       win_length=fft_size)
                 stft_full = stft_full[0:-1, :]
                 stft_mag = abs(stft_full)
-                stft_mag = stft_mag ** 0.3
-                songname = track.name + '_' + str(counter)
+                stft_mag = np.interp(stft_mag, (stft_mag.min(), stft_mag.max()), (-0, +1))
+                stft_mag = (stft_mag ** 0.3) * 255
+                stft_mag = stft_mag.astype('uint8')
+                if opts.dataset == 'MUSDB18':
+                    songname = track.name + '_' + str(counter)
+                else:
+                    songname = track.filename + '_' + str(counter)
                 songname = os.path.join(save_dir, songname)
-                # if stft_mag.sum != 0:
-                sci.imsave(songname + '.png', stft_mag)
+                if stft_mag.sum != 0:
+                    imageio.imwrite(songname + '.png', stft_mag)
                 counter += 1
 
 
@@ -108,8 +127,8 @@ def switch_music(target, track):
 
 if __name__ == '__main__':
 
-    musdb2stft(save_dir='./data/datasets/lin_specs/musdb/', target='mixture')
-    musdb2stft(save_dir='./data/datasets/lin_specs/musdb/', target='wo_vocals')
+    musdb2stft(save_dir='./data/', target='mixture')
+    musdb2stft(save_dir='./data/', target='wo_vocals')
     divide_dataset()
     # divide_dataset(source_directory='../../data/datasets/lin_specs/musdb/wo_vocals',
     #                    mixture_directory='../../data/datasets/lin_specs/musdb/mixture',

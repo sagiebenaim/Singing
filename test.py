@@ -215,8 +215,8 @@ def test_stft_dsd(config, checkpoint_dir, output_folder='../../data/munit_output
     return sdr_median, sir_median, sar_median, sdr_max, sir_max
 
 
-def create_songs_dsd(config, checkpoint_dir,  output_folder='../../data/munit_outputs/music2vocals_stft/DSD100_out/',
-                 method_name='reference_8', target='vocals'):
+def create_songs_dsd(config, checkpoint_dir,  output_folder='./data/dsd_outputs/',
+                 method_name='method_1', target='vocals'):
     """
     Creating vocals and accompaniment tracks in DSD100 format for later evaluation in matlab official code
     :param config: path to config file
@@ -287,8 +287,8 @@ def create_songs_dsd(config, checkpoint_dir,  output_folder='../../data/munit_ou
         sf.write(save_dir + '/accompaniment.wav', recon_inter, track.rate)
 
 
-def create_songs(config, checkpoint_dir,  output_folder='../../data/munit_outputs/music2vocals_stft/testset_samples_out/',
-                 input_folder='../../data/datasets/music/testset_samples'):
+def create_songs(config, checkpoint_dir,  output_folder='./outputs',
+                 input_folder='./imputs'):
     """
     creating vocals and accompaniment for any given song directory, for format supported by soundfile library
     :param config: path to .yaml file containing hyperparameters for the trainer
@@ -369,17 +369,8 @@ def load_obj(name):
 
 if __name__ == '__main__':
 
-    # test_stft_dsd(config='/home/moshe/ext/code/MUSIC/configs/music2vocals_stft_12.yaml',
-    #                  checkpoint_dir='/home/moshe/ext/data/munit_outputs/music2vocal_stft/outputs/music2vocals_stft_12/checkpoints/gen_00285000.pt',
-    #                  output_folder='../../data/munit_outputs/music2vocals_stft/DSD100_out/',
-    #                  method_name='dsd_12_9_285', target='vocals', is_test=True)
+    test_stft_dsd(config='./configs/vocals_new.yaml',
+                  checkpoint_dir='../../data/singing_outputs/outputs/vocals_new/checkpoints/gen_00005000.pt',
+                  output_folder='./outputs/',
+                  method_name='method_1', target='vocals', is_test=True)
 
-    test_stft_dsd(config='/home/moshe/ext/code/MUSIC/configs/vocals_3.yaml',
-                  checkpoint_dir='/home/moshe/ext/data/music_outputs/vocals/outputs/vocals_3/checkpoints/gen_00040000.pt',
-                  output_folder='../../data/munit_outputs/music2vocals_stft/DSD100_out/',
-                  method_name='dsd_new_try_3', target='vocals', is_test=True)
-
-    # create_songs_dsd(config='/home/moshe/ext/code/MUSIC/configs/music2vocals_stft_12.yaml',
-    #                  checkpoint_dir='/home/moshe/ext/data/munit_outputs/music2vocal_stft/outputs/music2vocals_stft_12/checkpoints/gen_00285000.pt',
-    #                  output_folder='../../data/munit_outputs/music2vocals_stft/DSD100_out/',
-    #                  method_name='dsd_12_9_285')
