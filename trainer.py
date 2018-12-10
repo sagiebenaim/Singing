@@ -1,7 +1,7 @@
 """
 modified from: Multimodal Unsupervised Image-to-Image Translation
 https://github.com/NVlabs/MUNIT
-Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode).
+Licensed under the CC BY-NC-SA 4.0 license (https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode)..
 """
 from networks import MsImageDis, MaskGen, MaskGenOld
 from utils import weights_init, get_model_list, get_scheduler

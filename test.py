@@ -112,7 +112,7 @@ def test_stft_dsd(config, checkpoint_dir, output_folder='./outputs/',
     :param method_name: name of method
     :param target: desired target (vocals/drums/bass)
     :param is_test: flag, when running during training should be False. True for total DSD100 evaluation for a given checkpoint.
-    :return: stat parameters for the net, added to tensorboard
+    :return: stat parameters for the net, added to tensorboard.
     """
     dsd = dsdtools.DB(root_dir='../../data/datasets/music/DSD100')
     tracks = dsd.load_dsd_tracks(subsets='Test')
