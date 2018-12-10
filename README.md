@@ -70,13 +70,13 @@ $ python test.py
 To separate music channels (default:vocals and accompaniment) for DSD100, using the pretrained model, run the script below. The audio files will be saved into `./outputs` directory.
 
 ```bash
-$ python create_songs.py'
+$ python create_songs.py
 ```
 
 The script contains the function `create_songs` for creating vocals and accompaniment for any given song directory, for file format supported by [soundfile](https://pysoundfile.readthedocs.io/en/0.9.0/).
 for doing so, create a folder named `./input`, move there the files and run the script:
 ```bash
-$ python create_songs.py' --input custom
+$ python create_songs.py --input custom
 ```
 
 ## Acknowledgement
