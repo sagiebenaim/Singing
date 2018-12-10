@@ -11,10 +11,11 @@ import sys
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', type=str, default='MUSDB18', help='dataset to create spectrograms from')
+parser.add_argument('--target', type=str, default='vocals', help='the dataset to create for separation')
 opts = parser.parse_args()
 
 
-def musdb2stft(save_dir='./data/', target='wo_drums'):
+def musdb2stft(save_dir='./data/', target='wo_vocals'):
     """
     create stft dataset from MUSDB18
     :param save_dir: the path for the wanted data directory
@@ -69,7 +70,7 @@ def musdb2stft(save_dir='./data/', target='wo_drums'):
                 else:
                     songname = track.filename + '_' + str(counter)
                 songname = os.path.join(save_dir, songname)
-                if stft_mag.sum != 0:
+                if stft_mag.sum() != 0:
                     imageio.imwrite(songname + '.png', stft_mag)
                 counter += 1
 
@@ -128,8 +129,15 @@ def switch_music(target, track):
 if __name__ == '__main__':
 
     musdb2stft(save_dir='./data/', target='mixture')
-    musdb2stft(save_dir='./data/', target='wo_vocals')
-    divide_dataset()
+    if opts.target == 'vocals':
+        musdb2stft(save_dir='./data/', target='wo_vocals')
+        divide_dataset()
+    elif opts.target == 'drums':
+        musdb2stft(save_dir='./data/', target='wo_drums')
+        divide_dataset(source_directory='./data/wo_drums', dataset_name='drums_dataset')
+    elif opts.target == 'bass':
+        musdb2stft(save_dir='./data/', target='wo_bass')
+        divide_dataset(source_directory='./data/wo_bass', dataset_name='bass_dataset')
     # divide_dataset(source_directory='../../data/datasets/lin_specs/musdb/wo_vocals',
     #                    mixture_directory='../../data/datasets/lin_specs/musdb/mixture',
     #                    methods_name='vocals_dataset')
