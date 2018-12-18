@@ -78,6 +78,16 @@ for doing so, create a folder named `./input`, move there the files and run the 
 ```bash
 $ python create_songs.py --input custom
 ```
+## Reference
+If you found this code useful, please cite the following paper:
+```
+@article{michelashvili2018singing,
+  title={Semi-Supervised Monaural Singing Voice Separation With a Masking Network Trained on Synthetic Mixtures},
+  author={Michael Michelashvili and Sagie Benaim and Lior Wolf},
+  journal={arXiv preprint arXiv:1812.06087},
+  year={2018}
+}
+```
 
 ## Acknowledgement
-The implementation is based on the architecture of [MUNIT](https://github.com/NVlabs/MUNIT)
+This repository is based on the code from [MUNIT](https://github.com/NVlabs/MUNIT)
