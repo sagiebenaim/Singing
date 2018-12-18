@@ -1,6 +1,6 @@
 # Singing
 
-This repository provides a PyTorch implementation of "Semi-supervised Monaural Singing Voice Separation with a Masking Network Trained on Synthetic Mixtures".
+This repository provides a PyTorch implementation of "Semi-supervised Monaural Singing Voice Separation with a Masking Network Trained on Synthetic Mixtures" [(link)](https://arxiv.org/abs/1812.06087).
 
 The network learns to seperate vocals from music, by training on a set of samples of mixed music (singing and instrumental) and an unmatched set of instrumental music. **Comparison with a fully supervised method can be found [here](https://sagiebenaim.github.io/Singing/)**
 
