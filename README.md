@@ -81,11 +81,11 @@ $ python create_songs.py --input custom
 ## Reference
 If you found this code useful, please cite the following paper:
 ```
-@article{michelashvili2018singing,
+  @inproceedings{michelashvili2018singing,
   title={Semi-Supervised Monaural Singing Voice Separation With a Masking Network Trained on Synthetic Mixtures},
   author={Michael Michelashvili and Sagie Benaim and Lior Wolf},
-  journal={arXiv preprint arXiv:1812.06087},
-  year={2018}
+  booktitle={ICASSP},
+  year={2019},
 }
 ```
 
